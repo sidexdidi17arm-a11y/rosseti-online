@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -135,6 +135,8 @@
             transition: all 0.25s ease;
             border: 1px solid rgba(255, 255, 255, 0.5);
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card:hover {
@@ -236,8 +238,12 @@
         .card-content {
             padding: 8px 16px 20px;
             text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
+        /* Единый стиль для сетки статистики во всех карточках */
         .stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -268,6 +274,7 @@
             line-height: 1.2;
         }
 
+        /* Единый стиль для описания */
         .description {
             background: #f3f9fd;
             border-radius: 14px;
@@ -280,47 +287,30 @@
             border: 1px solid rgba(11, 94, 138, 0.06);
         }
 
-        .simple-description {
-            font-size: 12px;
-            font-weight: 600;
-            color: #0c4a6e;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 2px dashed #a8cfdf;
-            line-height: 1.4;
-        }
-
-        .fes-block {
+        /* Специальный стиль для блока ФЭС (теперь в сетке 2x2) */
+        .fes-stat-item {
             background: linear-gradient(145deg, #0c4a6e, #0b5e8a);
-            border-radius: 18px;
-            padding: 16px 8px;
-            margin-bottom: 16px;
+            border-radius: 14px;
+            padding: 10px 6px;
+            border: none;
             color: white;
-            box-shadow: 0 10px 18px -8px rgba(11, 94, 138, 0.3);
         }
 
-        .fes-label {
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            opacity: 0.9;
-            margin-bottom: 6px;
+        .fes-stat-item .stat-label {
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        .fes-value {
-            font-size: 30px;
-            font-weight: 800;
-            line-height: 1;
+        .fes-stat-item .stat-value {
+            color: white;
             display: flex;
             align-items: baseline;
             justify-content: center;
         }
 
         .fes-unit {
-            font-size: 16px;
+            font-size: 12px;
             font-weight: 500;
-            margin-left: 5px;
+            margin-left: 4px;
             opacity: 0.9;
         }
 
@@ -330,6 +320,7 @@
             padding: 14px 12px;
             border-left: 4px solid #0b5e8a;
             text-align: left;
+            margin-bottom: 16px;
         }
 
         .info-title {
@@ -359,7 +350,7 @@
             justify-content: center;
             align-items: center;
             padding-top: 14px;
-            margin-top: 8px;
+            margin-top: auto;
             border-top: 1px solid rgba(11, 94, 138, 0.1);
         }
 
@@ -490,7 +481,7 @@
     </div>
     
     <div class="services-container">
-        <!-- Карточка 1: Статистика опроса по ФЭС -->
+        <!-- Карточка 1: Статистика опроса по ФЭС (теперь в едином стиле) -->
         <div class="service-card">
             <div class="card-top-section">
                 <a href="https://opros-fes.onrender.com" class="card-access-link" target="_blank">
@@ -508,22 +499,35 @@
             </div>
             
             <div class="card-content">
-                <div class="simple-description">
-                    Еженедельный мониторинг опроса приборов учёта
+                <!-- Сетка статистики 2x2 как во всех карточках -->
+                <div class="stats-grid">
+                    <div class="fes-stat-item">
+                        <div class="stat-label">Филиалы</div>
+                        <div class="stat-value">7<span class="fes-unit">ФЭС</span></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Опрос</div>
+                        <div class="stat-value">ПУ</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">СПОДЭС</div>
+                        <div class="stat-value">ПУ</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Отчеты</div>
+                        <div class="stat-value">по фэс</div>
+                    </div>
                 </div>
                 
-                <div class="fes-block">
-                    <div class="fes-label">Филиалы</div>
-                    <div class="fes-value">7<span class="fes-unit">ФЭС</span></div>
+                <!-- Единый стиль описания -->
+                <div class="description">
+                    Еженедельный мониторинг опроса приборов учёта. ПС РЭС не учитывается в общих показателях.
                 </div>
                 
-                <div class="info-block">
-                    <div class="info-title">
-                        <i class="fas fa-calendar-week"></i> Опрос ПУ и СПОДЭС
-                    </div>
-                    <div class="info-text">
-                        ПС РЭС не учитывается в общих показателях
-                    </div>
+                <div class="card-footer">
+                    <span class="status">
+                        <i class="fas fa-check-circle"></i> Мониторинг
+                    </span>
                 </div>
             </div>
         </div>
@@ -713,7 +717,7 @@
             const formattedDate = now.toLocaleDateString('ru-RU', dateOptions);
             const formattedTime = now.toLocaleTimeString('ru-RU', timeOptions);
             
-            // Обновляем только заголовок
+            // Обновляем заголовок
             document.getElementById('headerDate').textContent = formattedDate;
             document.getElementById('headerTime').textContent = formattedTime;
         }
