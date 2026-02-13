@@ -81,7 +81,6 @@
             border: 1px solid rgba(255, 255, 255, 0.9);
         }
 
-        /* Дата-время по середине */
         .datetime-center {
             display: flex;
             align-items: center;
@@ -256,42 +255,22 @@
             flex-direction: column;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .stat-item {
-            background: rgba(230, 242, 255, 0.6);
-            border-radius: 14px;
-            padding: 8px 4px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-        }
-
-        .stat-label {
-            font-size: 8px;
-            font-weight: 600;
-            color: #6699CC;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-bottom: 2px;
-        }
-
-        .stat-value {
-            font-size: 16px;
-            font-weight: 600;
+        .simple-description {
+            font-size: 12px;
+            font-weight: 500;
             color: #003D99;
-            line-height: 1.2;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px dashed #99C2FF;
+            line-height: 1.4;
+            text-align: left;
         }
 
         .description {
             background: rgba(230, 242, 255, 0.6);
             border-radius: 16px;
-            padding: 10px 12px;
-            font-size: 10px;
+            padding: 14px 14px;
+            font-size: 11px;
             color: #1E3A5F;
             line-height: 1.5;
             margin-bottom: 16px;
@@ -302,38 +281,42 @@
         }
 
         .description i {
-            margin-right: 5px;
+            margin-right: 8px;
             color: #0066CC;
-            font-size: 10px;
-        }
-
-        .fes-stat-item {
-            background: linear-gradient(145deg, #0066CC, #003D99);
-            border-radius: 14px;
-            padding: 8px 4px;
-            border: none;
-            color: white;
-            box-shadow: 0 6px 12px -4px rgba(0, 102, 204, 0.2);
-        }
-
-        .fes-stat-item .stat-label {
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 500;
-        }
-
-        .fes-stat-item .stat-value {
-            color: white;
-            display: flex;
-            align-items: baseline;
-            justify-content: center;
-            font-weight: 600;
-        }
-
-        .fes-unit {
             font-size: 11px;
+        }
+
+        .info-block {
+            background: rgba(230, 242, 255, 0.6);
+            border-radius: 16px;
+            padding: 14px 14px;
+            border-left: 4px solid #0066CC;
+            text-align: left;
+            margin-bottom: 16px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .info-title {
+            font-weight: 600;
+            color: #003D99;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .info-title i {
+            color: #0066CC;
+            font-size: 12px;
+        }
+
+        .info-text {
+            color: #1E3A5F;
+            font-size: 11px;
+            line-height: 1.5;
             font-weight: 400;
-            margin-left: 3px;
-            opacity: 0.9;
         }
 
         .card-footer {
@@ -442,7 +425,6 @@
         
         <h1 class="page-title">ОНЛАЙН СЕРВИСЫ</h1>
         
-        <!-- Блок даты и времени по середине -->
         <div class="datetime-center" id="headerDateTime">
             <i class="fas fa-calendar-alt"></i>
             <span id="headerDate"></span>
@@ -474,28 +456,13 @@
             </div>
             
             <div class="card-content">
-                <div class="stats-grid">
-                    <div class="fes-stat-item">
-                        <div class="stat-label">Филиалы</div>
-                        <div class="stat-value">7<span class="fes-unit">ФЭС</span></div>
+                             <div class="info-block">
+                    <div class="info-title">
+                        <i class="fas fa-calendar-week"></i> Опрос ПУ
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Опрос</div>
-                        <div class="stat-value">ПУ</div>
+                    <div class="info-text">
+                        ПС РЭС не учитывается в общих показателях
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-label">СПОДЭС</div>
-                        <div class="stat-value">ПУ</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Отчеты по</div>
-                        <div class="stat-value">ФЭС</div>
-                    </div>
-                </div>
-                
-                <div class="description">
-                    <i class="fas fa-chart-simple"></i>
-                    Еженедельный мониторинг, ПС РЭС не учитывается
                 </div>
                 
                 <div class="card-footer">
@@ -524,28 +491,8 @@
             </div>
             
             <div class="card-content">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-label">Время</div>
-                        <div class="stat-value">60'</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Формат</div>
-                        <div class="stat-value">JSON</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Режим</div>
-                        <div class="stat-value">Online</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Шифр.</div>
-                        <div class="stat-value">AES</div>
-                    </div>
-                </div>
-                
                 <div class="description">
-                    <i class="fas fa-lock"></i>
-                    Загрузка вопросов, защита паролем
+                    <i class="fas fa-lock"></i> Система тестирования персонала, Оценка знаний
                 </div>
                 
                 <div class="card-footer">
@@ -569,33 +516,13 @@
                 
                 <div class="card-header">
                     <h2>Система управления РЭС</h2>
-                    <div class="card-subtitle">Районы сетей</div>
+                    <div class="card-subtitle">Районы электросетей</div>
                 </div>
             </div>
             
             <div class="card-content">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-label">Модуль</div>
-                        <div class="stat-value">Упр.</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Объекты</div>
-                        <div class="stat-value">РЭС</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Доступ</div>
-                        <div class="stat-value">24/7</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Статус</div>
-                        <div class="stat-value">✓</div>
-                    </div>
-                </div>
-                
                 <div class="description">
-                    <i class="fas fa-diagram-project"></i>
-                    Мониторинг, управление, отчётность
+                    <i class="fas fa-diagram-project"></i> Мониторинг, управление и отчётность по РЭС
                 </div>
                 
                 <div class="card-footer">
@@ -624,28 +551,8 @@
             </div>
             
             <div class="card-content">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-label">Тип</div>
-                        <div class="stat-value">Реестр</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Учёт</div>
-                        <div class="stat-value">ПУ</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Доступ</div>
-                        <div class="stat-value">Online</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Статус</div>
-                        <div class="stat-value">✓</div>
-                    </div>
-                </div>
-                
                 <div class="description">
-                    <i class="fas fa-clipboard-list"></i>
-                    Реестр, инвентаризация, отчётность
+                    <i class="fas fa-clipboard-list"></i> Реестр, инвентаризация, отчётность по ПУ
                 </div>
                 
                 <div class="card-footer">
